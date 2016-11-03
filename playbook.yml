@@ -9,6 +9,10 @@
     yum: state=latest name=docker
     become: yes
     become_method: sudo
+  - name: check docker service is on
+    service: name=docker enabled=yes state=started
+    become: yes
+    become_method: sudo
   - name: give user permissions
     user: 
       name=ec2-user

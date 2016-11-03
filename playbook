@@ -1,0 +1,19 @@
+- hosts: localhost
+  #remote_user: root
+  tasks:
+  - name:  git install
+    yum: state=present name=git
+    become: yes
+    become_method: sudo
+  tasks:
+  - name: git clone Petclinic
+    git:
+      clone=yes
+      dest=/home/ec2-user/petclinic
+      repo=https://github.com/YaronBasson/spring-petclinic.git
+  - name: clone trepo repo
+    git:
+      clone=yes
+      dest=/home/ec2-user/trepo
+      repo=https://github.com/YaronBasson/trepo.git
+    

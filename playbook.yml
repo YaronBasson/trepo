@@ -5,7 +5,17 @@
     yum: state=present name=git
     become: yes
     become_method: sudo
-  tasks:
+  - name:  install docker 
+    yum: state=latest name=docker
+    become: yes
+    become_method: sudo
+  - name: give user permissions
+    user: 
+      name=ec2-user
+      groups=docker
+      append=yes
+    become: yes
+    become_method: sudo
   - name: git clone Petclinic
     git:
       clone=yes

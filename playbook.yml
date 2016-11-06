@@ -1,5 +1,5 @@
 - hosts: localhost
-  #remote_user: root
+  remote_user: root
   tasks:
   - name:  git install
     yum: state=present name=git
@@ -31,4 +31,5 @@
       update=no
       dest=/home/ec2-user/trepo
       repo=https://github.com/YaronBasson/trepo.git
-    
+  - name: install maven
+    unarchive: copy=no creates=~/apache-maven-3.3.9 dest=~ src=http://apache.mivzakim.net/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz

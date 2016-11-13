@@ -20,6 +20,8 @@
       append=yes
     become: yes
     become_method: sudo
+  - name: install docker-py
+    pip: version=1.9.0 name docker-py
   - name: git clone Petclinic
     git:
       clone=yes

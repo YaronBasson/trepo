@@ -1,0 +1,14 @@
+- hosts: localhost
+  remote_user: root
+  tasks:
+  - name: download and unzipo maven
+    unarchive: copy=no creates=/home/ec2-user/trepo/e3/apache-maven-3.3.9 dest=/home/ec2-user/trepo/e3 src=http://apache.mivzakim.net/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+  - name: copy maven from local
+    copy:
+      src=/home/ec2-user/apache-maven-3.3.9/
+      dest=/home/ec2-user/trepo/e3/apache-maven-3.3.9
+  - name: build docker
+    docker_image:
+      path=/home/ec2-user/trepo/e3
+      name=e3
+
